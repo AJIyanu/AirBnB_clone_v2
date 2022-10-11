@@ -21,6 +21,8 @@ class FileStorage:
         with open(FileStorage.__file_path, 'w') as f:
             temp = {}
             temp.update(FileStorage.__objects)
+            if "__class__" in temp:
+                del temp["__class__"]
             for key, val in temp.items():
                 temp[key] = val.to_dict()
             json.dump(temp, f)
