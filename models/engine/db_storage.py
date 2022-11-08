@@ -3,8 +3,10 @@
 This is a new database storage module
 """
 
-import os
-from sqlalchemy import create_engine, MetaData
+
+from os import environ
+
+from sqlalchemy import MetaData, create_engine
 from sqlalchemy.orm import sessionmaker
 
 
@@ -41,3 +43,4 @@ class DBStorage:
         """
         Session = sessionmaker(bind=self.__engine)
         self.__session = Session()
+        result = Session.query.all
