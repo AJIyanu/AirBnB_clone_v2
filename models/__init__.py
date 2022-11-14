@@ -6,10 +6,10 @@ import os
 
 strgtype = os.getenv("HBNB_TYPE_STORAGE")
 if strgtype == "db":
-    from models.engine.file_storage import FileStorage as Storage
+    from models.engine.file_storage import FileStorage
+    storage = FileStorage()
 else:
-    from models.engine.db_storage import DBStorage as Storage
+    from models.engine.db_storage import DBStorage
+    storage = DBStorage()
 
-
-storage = Storage()
 storage.reload()
