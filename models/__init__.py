@@ -13,4 +13,4 @@ else:
     storage = DBStorage()
 
 storage.reload()
-print(strgtype)
+print(type(storage))
