@@ -4,7 +4,7 @@ This is a new database storage module
 """
 
 
-from os import environ
+import os
 
 from sqlalchemy import MetaData, create_engine
 from sqlalchemy.orm import sessionmaker
