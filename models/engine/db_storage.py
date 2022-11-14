@@ -50,7 +50,7 @@ class DBStorage:
         else:
             result = {}
             for mod in clas:
-                result.update(sess.query(mod).all)
+                result.update(sess.query(mod).all())
         objdict = {}
         for clsdb in result:
             key = "{}.{}".format(clsdb.__name__, clsdb.id)
