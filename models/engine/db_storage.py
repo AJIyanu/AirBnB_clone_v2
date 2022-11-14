@@ -72,5 +72,5 @@ class DBStorage:
         """creates all tablels"""
         connection = self.__engine.connect()
         Base.metadata.create_all(self.__engine)
-        session = sessionmaker(bind=connection, expire_on_commit=False)()
+        session = sessionmaker(bind=connection, expire_on_commit=False)
         self.__session = scoped_session(session)
