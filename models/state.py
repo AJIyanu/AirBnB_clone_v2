@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 
 from models.base_model import Base, BaseModel
 from models.city import City
-from models import storage
+from models.engine.file_storage import FileStorage
 
 
 class State(BaseModel, Base):
@@ -18,8 +18,11 @@ class State(BaseModel, Base):
     def cities(self):
         """create a relationship for state in Filestorage"""
         Cities = []
-        cityinstance = storage.all(City)
+        fs = FileStorage()
+        cityinstance = fs.all(City)
         for city in cityinstance:
-            if city["id"] == self.id:
-                Cities.append(city)
-        return ()
+            if cityinstance[city].state_id is self.id:
+                Cities.append(cityinstance[city])
+            print(cityinstance[city])
+        print(Cities)
+        return (cityinstance)

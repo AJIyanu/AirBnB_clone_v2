@@ -43,4 +43,10 @@ class DBStorage:
         """
         Session = sessionmaker(bind=self.__engine)
         self.__session = Session()
-        result = Session.query.all
+        if cls is not None:
+            result = Session.query(cls).all
+        else:
+            result = Session.query(User,State,City,Amenity,Place,Review).all
+        for clsdb in result:
+            key = "{}.{}".format(clsdb.__name__, clsdb.id)
+            obj = 
