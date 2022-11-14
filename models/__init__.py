@@ -13,3 +13,4 @@ else:
     storage = DBStorage()
 
 storage.reload()
+print(strgtype)
