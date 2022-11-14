@@ -48,7 +48,9 @@ class DBStorage:
         if cls is not None:
             result = sess.query(cls).all
         else:
-            result = sess.query(**clas).all
+            result = {}
+            for mod in clas:
+                result.update(sess.query(mod).all)
         objdict = {}
         for clsdb in result:
             key = "{}.{}".format(clsdb.__name__, clsdb.id)
