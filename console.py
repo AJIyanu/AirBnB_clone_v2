@@ -127,7 +127,6 @@ class HBNBCommand(cmd.Cmd):
         print(new_instance.id)
         dcttmp = storage.all()
         dctcurr = dcttmp.get(args[0] + "." + new_instance.id)
-        print(dctcurr)
         for i in range(1, len(args)):
             key = args[i].split("=")
             try:
