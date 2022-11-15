@@ -13,6 +13,6 @@ db = DBStorage()
 #trying to reload all datatable
 db.reload()
 alltable = db.all(State)
-for one in alltable:
-    print(one)
+#for one in alltable:
+#    print(one)
 print(alltable)
