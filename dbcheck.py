@@ -14,3 +14,4 @@ db = DBStorage()
 alltable = db.all()
 for one in alltable:
     print(one)
+print(alltable)
