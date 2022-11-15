@@ -51,7 +51,9 @@ class DBStorage:
             result = []
             for mod in clas:
                 try:
-                    result.append(sess.query(mod).all())
+                    results = sess.query(mod).all()
+                    for res in results:
+                        result.append(res)
                 except Exception:
                     print("{} didnt work".format(mod))
                 finally:
