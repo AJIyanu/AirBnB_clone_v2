@@ -55,7 +55,7 @@ class DBStorage:
                     for res in results:
                         result.append(res)
                 except Exception:
-                    print("{} didnt work".format(mod))
+                    pass
                 finally:
                     continue
         objdict = {}

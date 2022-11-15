@@ -14,5 +14,5 @@ db = DBStorage()
 db.reload()
 alltable = db.all()
 for one in alltable:
-    print("{}".format(one))
+    print("{}, wetin dey be this {}".format(one, alltable[one]))
 #print("{}".format(alltable))
