@@ -46,7 +46,7 @@ class DBStorage:
         clas = [User, State, City, Amenity, Place, Review, BaseModel]
         sess = self.__session
         if cls is not None:
-            result = sess.query(cls).all
+            result = sess.query(cls).all()
         else:
             result = {}
             for mod in clas:
