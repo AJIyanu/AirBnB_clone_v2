@@ -10,7 +10,7 @@ from sqlalchemy import MetaData, create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 from ..amenity import Amenity
-from ..base_model import Base
+from ..base_model import Base, BaseModel
 from ..city import City
 from ..place import Place
 from ..review import Review
