@@ -57,9 +57,10 @@ class DBStorage:
                 finally:
                     continue
         objdict = {}
-        '''for clsdb in result:
+        for clsdb in result:
             key = "{}.{}".format(clsdb.__name__, clsdb.id)
-            objdict.update({key: clsdb})'''
+            objdict.update({key: clsdb})
+        print(objdict)
         return (result)
 
     def new(self, obj):
