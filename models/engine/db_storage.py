@@ -48,10 +48,10 @@ class DBStorage:
         if cls is not None:
             result = sess.query(cls).all()
         else:
-            result = {}
+            result = []
             for mod in clas:
                 try:
-                    result.update(sess.query(mod).all())
+                    result.append(sess.query(mod).all())
                 except Exception:
                     print("{} didnt work".format(mod))
                 finally:
