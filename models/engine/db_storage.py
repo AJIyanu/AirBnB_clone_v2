@@ -58,7 +58,7 @@ class DBStorage:
                     continue
         objdict = {}
         for clsdb in result:
-            key = "{}.{}".format(clsdb.__name__, clsdb.id)
+            key = "{}.{}".format(clsdb.__class__.__name__, clsdb.id)
             objdict.update({key: clsdb})
         print(objdict)
         return (result)
