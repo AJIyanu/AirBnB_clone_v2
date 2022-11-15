@@ -53,7 +53,7 @@ class DBStorage:
                 try:
                     result.update(sess.query(mod).all())
                 except Exception:
-                    pass
+                    print("{} didnt work".format(mod))
                 finally:
                     continue
         objdict = {}

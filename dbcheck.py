@@ -12,7 +12,7 @@ db = DBStorage()
 
 #trying to reload all datatable
 db.reload()
-alltable = db.all(State)
+alltable = db.all()
 for one in alltable:
     print("{}".format(one))
 print("{}".format(alltable))
