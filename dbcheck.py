@@ -11,6 +11,7 @@ from models.city import City
 db = DBStorage()
 
 #trying to reload all datatable
+db.reload()
 alltable = db.all(State)
 for one in alltable:
     print(one)
