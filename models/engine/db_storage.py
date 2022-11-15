@@ -62,8 +62,7 @@ class DBStorage:
         for clsdb in result:
             key = "{}.{}".format(clsdb.__class__.__name__, clsdb.id)
             objdict.update({key: clsdb})
-        print(objdict)
-        return (result)
+        return (objdict)
 
     def new(self, obj):
         """add the object to the current database session (self.__session)"""

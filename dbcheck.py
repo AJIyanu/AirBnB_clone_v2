@@ -15,4 +15,4 @@ db.reload()
 alltable = db.all()
 for one in alltable:
     print("{}".format(one))
-print("{}".format(alltable))
+#print("{}".format(alltable))
