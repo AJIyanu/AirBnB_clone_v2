@@ -123,10 +123,11 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         new_instance = HBNBCommand.classes[args[0]]()
-        new_instance.save()
+        #new_instance.save()
         print(new_instance.id)
-        dcttmp = storage.all()
-        dctcurr = dcttmp.get(args[0] + "." + new_instance.id)
+        #dcttmp = storage.all()
+        #dctcurr = dcttmp.get(args[0] + "." + new_instance.id)
+        dctcurr = new_instance
         for i in range(1, len(args)):
             key = args[i].split("=")
             try:
@@ -139,6 +140,7 @@ class HBNBCommand(cmd.Cmd):
                     param = param.replace("_", " ")
             key = {key[0]: param}
             dctcurr.__dict__.update(key)
+        new_instance.save()
         storage.save()
 
     def help_create(self):
