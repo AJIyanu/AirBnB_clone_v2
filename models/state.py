@@ -14,6 +14,10 @@ class State(BaseModel, Base):
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref="state", cascade="all, delete")
 
+    def __init__(self, *args, **kwargs):
+        """initializes state"""
+        super().__init__(*args, **kwargs)
+
     @property
     def cities(self):
         """create a relationship for state in Filestorage"""
@@ -23,4 +27,4 @@ class State(BaseModel, Base):
         for city in cityinstance:
             if cityinstance[city].state_id is self.id:
                 Cities.append(cityinstance[city])
-        return (City)
+        return (Cities)
