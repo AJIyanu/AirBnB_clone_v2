@@ -30,14 +30,14 @@ class Place(BaseModel,Base):
                           )
     amenities = relationship("Amenity", viewonly=False, secondary=place_amenity)
 
-@property
-def reviews(self):
-    """create a relationship for state in Filestorage"""
-    from models import FileStorage
-    amenity_ids = []
-    fs = FileStorage()
-    placeinstance = fs.all(Place)
-    for place in placeinstance:
-        if placeinstance[place].place_id is self.id:
-            amenity_ids.append(placeinstance[place])
-    return (amenity_ids)
+    @property
+    def reviews(self):
+        """create a relationship for state in Filestorage"""
+        from models import FileStorage
+        amenity_ids = []
+        fs = FileStorage()
+        placeinstance = fs.all(Place)
+        for place in placeinstance:
+            if placeinstance[place].place_id is self.id:
+                amenity_ids.append(placeinstance[place])
+        return (amenity_ids)
