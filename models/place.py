@@ -24,7 +24,19 @@ class Place(BaseModel,Base):
     amenity_ids = []
 
     place_amenity = Table('place_amenity', Base.metadata,
-                    Column('place_id', String(60), ForeignKey("places.id"), nullabe=False, primary_key=True)
-                    Column('amenity_id', String(60), ForeignKey("amenities.id"), nallable=False, primary_key=True)
+                    Column('place_id', String(60), ForeignKey("places.id"), nullable=False, primary_key=True),
+                    Column('amenity_id', String(60), ForeignKey("amenities.id"), nullable=False, primary_key=True)
                           )
     amenities = relationship("Amenity", viewonly=False, secondary=place_amenity)
+
+@property
+def reviews(self):
+    """create a relationship for state in Filestorage"""
+    from models import FileStorage
+    amenity_ids = []
+    fs = FileStorage()
+    placeinstance = fs.all(Place)
+    for place in placeinstance:
+        if placeinstance[place].place_id is self.id:
+            amenity_ids.append(placeinstance[place])
+    return (amenity_ids)

@@ -23,6 +23,4 @@ class State(BaseModel, Base):
         for city in cityinstance:
             if cityinstance[city].state_id is self.id:
                 Cities.append(cityinstance[city])
-            print(cityinstance[city])
-        print(Cities)
-        return (cityinstance)
+        return (City)
