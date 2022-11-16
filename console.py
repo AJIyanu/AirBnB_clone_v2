@@ -29,6 +29,7 @@ class HBNBCommand(cmd.Cmd):
              'max_guest': int, 'price_by_night': int,
              'latitude': float, 'longitude': float
             }
+    errlog = []
 
     def preloop(self):
         """Prints if isatty is false"""
@@ -140,8 +141,20 @@ class HBNBCommand(cmd.Cmd):
                     param = param.replace("_", " ")
             key = {key[0]: param}
             dctcurr.__dict__.update(key)
-        new_instance.save()
+        try:
+            new_instance.save()
+        except Exception as mess:
+            print("There was an error, please try again")
+            print("do showerr to view all and showerr last to view last err")
+            self.errlog.append(mess)
+        finally:
+            pass
         storage.save()
+
+    def do_showerr(self, args):
+        """View all error in a list or last error"""
+        for err in self.errlog:
+            print(err)
 
     def help_create(self):
         """ Help information for the create method """
