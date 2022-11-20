@@ -22,14 +22,14 @@ def do_deploy(archive_path):
         sudo("mkdir -p {}/{}/".format(path, folder[0]))
         new_archive = '.'.join(folder)
         sudo("tar -xzf /tmp/{} -C {}/{}/"
-            .format(new_archive, path, folder[0]))
+             .format(new_archive, path, folder[0]))
         sudo("rm /tmp/{}".format(archive))
         sudo("mv {}/{}/web_static/* {}/{}/"
-            .format(path, folder[0], path, folder[0]))
+             .format(path, folder[0], path, folder[0]))
         sudo("rm -rf {}/{}/web_static".format(path, folder[0]))
         sudo("rm -rf /data/web_static/current")
         sudo("ln -sf {}/{} /data/web_static/current"
-            .format(path, folder[0]))
+             .format(path, folder[0]))
         return True
-    except:
+    except Exception:
         return False
