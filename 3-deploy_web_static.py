@@ -20,8 +20,9 @@ def do_pack():
         local("tar --create --verbose -z --file={} ./web_static"
               .format(file_name))
         return file_name
-    except:
+    except Exception:
         return None
+
 
 def do_deploy(archive_path):
     """
@@ -48,6 +49,7 @@ def do_deploy(archive_path):
         return True
     except Exception:
         return False
+
 
 def deploy():
     """ready to deploy??"""
