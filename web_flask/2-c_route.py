@@ -15,9 +15,11 @@ app.url_map.strict_slashes = False
 def index():
     return "Hello HBNB!"
 
+
 @app.route("/hbnb")
 def index2():
     return "HBNB"
+
 
 @app.route("/c/<text>")
 def index3(text):
