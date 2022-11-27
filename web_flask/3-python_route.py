@@ -25,7 +25,8 @@ def index2():
 def index3(text):
     return "C {}".format(text.replace("_", " "))
 
-@app.route("/python/", defaults={"text": "is cool"}) 
+
+@app.route("/python/", defaults={"text": "is cool"})
 @app.route("/python/<text>")
 def display(text):
     return "Python {}".format(text.replace("_", " "))
