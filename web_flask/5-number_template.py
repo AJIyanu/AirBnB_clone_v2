@@ -1,10 +1,11 @@
+
 #!/usr/bin/python3
 """
 flask webframe work
 """
 
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -35,6 +36,11 @@ def display(text):
 @app.route("/number/<int:n>/")
 def integer_req(n):
     return "{} is a number".format(n)
+
+
+@app.route("/number_template/<int:n>")
+def serve_page(n):
+    return render_template("templates/5-number.html")
 
 
 if __name__ == "__main__":
