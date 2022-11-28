@@ -38,7 +38,7 @@ def integer_req(n):
     return "{} is a number".format(n)
 
 
-@app.route("/number_template/<int:n>")
+@app.route("/number_template/<int:n>/")
 def serve_page(n):
     return render_template("templates/5-number.html", n=n)
 
