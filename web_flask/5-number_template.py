@@ -40,7 +40,7 @@ def integer_req(n):
 
 @app.route("/number_template/<int:n>")
 def serve_page(n):
-    return render_template("templates/5-number.html")
+    return render_template("templates/5-number.html", n=n)
 
 
 if __name__ == "__main__":
