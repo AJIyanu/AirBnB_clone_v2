@@ -31,6 +31,7 @@ def index3(text):
 def display(text):
     return "Python {}".format(text.replace("_", " "))
 
+
 @app.route("/number/<int:n>/")
 def integer_req(n):
     return "{} is a number".format(n)
