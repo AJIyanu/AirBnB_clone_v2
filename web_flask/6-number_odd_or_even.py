@@ -49,7 +49,7 @@ def det_serve_pg(n):
     else:
         catg = "odd"
     return render_template("6-number_odd_or_even.html",
-                            n=n, catg=catg)
+                           n=n, catg=catg)
 
 
 if __name__ == "__main__":
