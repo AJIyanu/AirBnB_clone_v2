@@ -39,7 +39,17 @@ def integer_req(n):
 
 @app.route("/number_template/<int:n>/")
 def serve_page(n):
-    return render_template("5-number.html", n=n)
+    return render_template("templates/5-number.html", n=n)
+
+
+@app.route("/number_odd_or_even/<int:n>/")
+def det_serve_pg(n):
+    if n % 2 == 0:
+        catg = "even"
+    else:
+        catg = "odd"
+    return render_template("6-number_odd_or_even.html",
+                           n=n, catg=catg)
 
 
 if __name__ == "__main__":
