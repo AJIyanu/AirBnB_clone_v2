@@ -113,14 +113,14 @@ def wrapper_all_type(m_class):
 
 
 all_states = wrapper_all_type(State)
-print(all_states)
+#print(all_states)
 state_1 = all_states.get(state_id_1)
 if state_1 is None:
     state_1 = all_states.get("State.{}".format(state_id_1))
-print(state_1)
+#print(state_1)
 if state_1 is not None:
     all_cities = state_1.cities
-    print(all_cities)
+#    print(all_cities)
     if len(all_cities) != 2:
         print("FAIL: {} cities found instead of 2".format(len(all_cities)))
 
