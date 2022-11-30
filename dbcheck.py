@@ -24,11 +24,13 @@ def wrapper_all_type(m_class):
     res = {}
     try:
         res = storage.all(m_class)
+        print("first try - ", res)
     except:
         res = {}
     if res is None or len(res.keys()) == 0:
         try:
             res = storage.all(m_class.__name__)
+            print("res none, second try - ", res)
         except:
             res = {}
     return res
