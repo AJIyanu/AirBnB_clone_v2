@@ -24,7 +24,9 @@ def wrapper_all_type(m_class):
     res = {}
     try:
         res = storage.all(m_class)
-        print("first try - ", res)
+        #print("first try - ", res)
+        for key in res:
+            print(res[key])
     except:
         res = {}
     if res is None or len(res.keys()) == 0:
@@ -38,6 +40,7 @@ def wrapper_all_type(m_class):
 
 print(len(wrapper_all_type(State)))
 
+"""
 # Initial number of states
 add_states(3)
 
@@ -49,3 +52,4 @@ add_states(2)
 
 storage.close()
 print(len(wrapper_all_type(State)))
+"""
