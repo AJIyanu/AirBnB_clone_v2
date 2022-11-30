@@ -24,6 +24,7 @@ class State(BaseModel, Base):
         Cities = []
         fs = FileStorage()
         cityinstance = fs.all(City)
+        print("a dict?", cityinstance)
         for city in cityinstance:
             if cityinstance[city].state_id is self.id:
                 Cities.append(cityinstance[city])
