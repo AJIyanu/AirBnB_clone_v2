@@ -15,9 +15,8 @@ class FileStorage:
         objlist = {}
         for key in self.__objects:
             if type(self.__objects[key]) is cls:
-                objlist.update({key :self.__objects[key]})
+                objlist.update({key: self.__objects[key]})
         return (objlist)
-        #return (cls)
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -54,7 +53,7 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
 

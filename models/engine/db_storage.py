@@ -33,7 +33,8 @@ class DBStorage:
         host = os.getenv("HBNB_MYSQL_HOST")
         test = os.getenv("HBNB_ENV")
         url = "{}:{}@{}/{}".format(user, pswrd, host, db)
-        self.__engine = create_engine("mysql+mysqldb://{}".format(url), pool_pre_ping=True)
+        self.__engine = create_engine("mysql+mysqldb://{}".format(url),
+                                      pool_pre_ping=True)
         meta = MetaData(bind=self.__engine)
         if test == "test":
             meta.drop_all(self.__engine)
@@ -69,7 +70,7 @@ class DBStorage:
         self.__session.add(obj)
 
     def save(self):
-        """commit all changes of the current database session (self.__session)"""
+        """commit all changes of the database session (self.__session)"""
         self.__session.commit()
 
     def delete(self, obj=None):

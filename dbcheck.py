@@ -1,36 +1,53 @@
 #!/usr/bin/python3
-from models import *
+"""Doc
+"""
+import MySQLdb
+import sys
+import uuid
+from models import storage
 from models.state import State
-from models.city import City
-from models.user import User
-from models.place import Place
-from models.amenity import Amenity
 
-s = State(name="California")
-s.save()
-c = City(state_id=s.id, name="San Francisco")
-c.save()
 
-u = User(email="a@a.com", password="pwd")
-u.save()
+def add_states(number=1):
+    conn = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3], charset="utf8")
+    cur = conn.cursor()
 
-p1 = Place(user_id=u.id, city_id=c.id, name="House 1")
-p1.save()
-p2 = Place(user_id=u.id, city_id=c.id, name="House 2")
-p2.save()
+    for i in range(number):
+        cur.execute("INSERT INTO `states` (id, created_at, updated_at, name) VALUES ('{}','2016-03-25 19:42:40','2016-03-25 19:42:40','state{}');".format(str(uuid.uuid4()), i))
 
-a1 = Amenity(name="Wifi")
-a1.save()
-a2 = Amenity(name="Cable")
-a2.save()
-a3 = Amenity(name="Eth")
-a3.save()
+    conn.commit()
+    cur.close()
+    conn.close()
 
-p1.amenities.append(a1)
-p1.amenities.append(a2)
 
-p2.amenities.append(a1)
-p2.amenities.append(a2)
-p2.amenities.append(a3)
+def wrapper_all_type(m_class):
+    res = {}
+    try:
+        res = storage.all(m_class)
+        #print("first try - ", res)
+        #for key in res:
+        #   print(res[key])
+    except:
+        res = {}
+    if res is None or len(res.keys()) == 0:
+        try:
+            res = storage.all(m_class.__name__)
+            print("res none, second try - ", res)
+        except:
+            res = {}
+    return res
 
-storage.save()
+
+print(len(wrapper_all_type(State)))
+
+# Initial number of states
+add_states(3)
+
+storage.close()
+print(len(wrapper_all_type(State)))
+
+# Add new states
+add_states(2)
+
+storage.close()
+print(len(wrapper_all_type(State)))
