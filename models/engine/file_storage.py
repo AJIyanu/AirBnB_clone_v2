@@ -15,9 +15,8 @@ class FileStorage:
         objlist = {}
         for key in self.__objects:
             if type(self.__objects[key]) is cls:
-                objlist.update({key :self.__objects[key]})
+                objlist.update({key: self.__objects[key]})
         return (objlist)
-        #return (cls)
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
