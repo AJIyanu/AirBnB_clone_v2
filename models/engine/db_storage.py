@@ -12,10 +12,10 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from ..amenity import Amenity
 from ..base_model import Base, BaseModel
 from ..city import City
-from ..place import Place
-from ..review import Review
+#from ..place import Place
+#from ..review import Review
 from ..state import State
-from ..user import User
+#from ..user import User
 
 
 class DBStorage:
@@ -32,7 +32,7 @@ class DBStorage:
         db = os.getenv("HBNB_MYSQL_DB")
         host = os.getenv("HBNB_MYSQL_HOST")
         test = os.getenv("HBNB_ENV")
-        url = "{}:{}@{}/{}?charset=latin1".format(user, pswrd, host, db)
+        url = "{}:{}@{}/{}?charset=utf8".format(user, pswrd, host, db)
         self.__engine = create_engine("mysql+mysqldb://{}".format(url),
                                       pool_pre_ping=True)
         meta = MetaData(bind=self.__engine)
@@ -44,13 +44,14 @@ class DBStorage:
         This queries the database if none returns all object otherwise
         retutn selected object
         """
-        clas = [User, State, City, Amenity, Place, Review, BaseModel]
+#        clas = [User, State, City, Amenity, Place, Review, BaseModel]
+        tmpclass = [State. City]
         sess = self.__session
         if cls is not None:
             result = sess.query(cls).all()
         else:
             result = []
-            for mod in clas:
+            for mod in tmpclass:
                 try:
                     results = sess.query(mod).all()
                     for res in results:
