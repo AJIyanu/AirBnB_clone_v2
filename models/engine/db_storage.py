@@ -9,7 +9,7 @@ import os
 from sqlalchemy import MetaData, create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-from ..amenity import Amenity
+#from ..amenity import Amenity
 from ..base_model import Base, BaseModel
 from ..city import City
 #from ..place import Place
@@ -44,7 +44,7 @@ class DBStorage:
         This queries the database if none returns all object otherwise
         retutn selected object
         """
-#        clas = [User, State, City, Amenity, Place, Review, BaseModel]
+        clas = [User, State, City, Amenity, Place, Review, BaseModel]
         tmpclass = [State. City]
         sess = self.__session
         if cls is not None:
