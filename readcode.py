@@ -7,5 +7,5 @@ with open("file.txt") as code:
 split = bincode.split()
 for coded in split:
     intcode = int(coded, 2)
-    print(chr(intcode), end='')
+    print(intcode, end=' ')
 print()
