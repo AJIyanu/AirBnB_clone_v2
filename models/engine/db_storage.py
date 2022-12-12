@@ -32,7 +32,7 @@ class DBStorage:
         db = os.getenv("HBNB_MYSQL_DB")
         host = os.getenv("HBNB_MYSQL_HOST")
         test = os.getenv("HBNB_ENV")
-        url = "{}:{}@{}/{}".format(user, pswrd, host, db)
+        url = "{}:{}@{}/{}?charset=latin1".format(user, pswrd, host, db)
         self.__engine = create_engine("mysql+mysqldb://{}".format(url),
                                       pool_pre_ping=True)
         meta = MetaData(bind=self.__engine)
@@ -45,12 +45,13 @@ class DBStorage:
         retutn selected object
         """
         clas = [User, State, City, Amenity, Place, Review, BaseModel]
+        tmpclass = [State. City]
         sess = self.__session
         if cls is not None:
             result = sess.query(cls).all()
         else:
             result = []
-            for mod in clas:
+            for mod in tmpclass:
                 try:
                     results = sess.query(mod).all()
                     for res in results:
