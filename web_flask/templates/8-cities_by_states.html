@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        <H1>States</H1>
+        <UL id = "statesitems">
+		{% for items in statesitems %}
+			<LI>{{ statesitems[items].id }}: <B>{{ statesitems[items].name }}</B><LI>
+					<UL id = "cityitem">
+						{% for item in cityitem %}
+						{% if cityitem[item].state_id == statesitems[items].id %}
+						<LI>{{ cityitem[item].id }}: <B>{{ cityitem[item].name }}</B></LI>
+						{% endif %}
+						{% endfor %}
+					</UL>
+		{% endfor %}
+        </UL>
+    </BODY>
+</HTML>

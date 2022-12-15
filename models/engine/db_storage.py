@@ -45,7 +45,6 @@ class DBStorage:
         retutn selected object
         """
         clas = [User, State, City, Amenity, Place, Review, BaseModel]
-        tmpclass = [State. City]
         sess = self.__session
         if cls is not None:
             result = sess.query(cls).all()
